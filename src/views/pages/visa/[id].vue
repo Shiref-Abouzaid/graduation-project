@@ -82,7 +82,7 @@
   </v-card>
 
   <div class="d-flex mt-5"> 
-      <v-btn color="info" size="large" to="/visas"> <ArrowLeftOutlined /> Visas</v-btn>
+      <v-btn color="info" size="large" to="/categories"> <ArrowLeftOutlined /> Categories</v-btn>
       <v-btn color="success" size="large" class="ms-auto" :to="`/visas/add?editMode=true&id=${route.params.id}`"> <FormOutlined /> Edit</v-btn>
     </div>
 </template>

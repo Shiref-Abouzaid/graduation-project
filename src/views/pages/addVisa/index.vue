@@ -31,9 +31,9 @@ watch(route, async () => {
 
 const breadcrumbs = shallowRef([
   {
-    title: "Visas",
+    title: "Categories",
     disabled: false,
-    href: "/visas",
+    href: "/categories",
   },
   {
     title: editMode.value ? "Edit" : "Add",

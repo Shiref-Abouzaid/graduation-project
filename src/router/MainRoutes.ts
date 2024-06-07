@@ -7,9 +7,9 @@ const MainRoutes = {
   component: () => import('@/layouts/dashboard/DashboardLayout.vue'),
   children: [
     {
-      name: 'Visas',
-      path: '/visas',
-      component: () => import('@/views/pages/visas.vue')
+      name: 'Categories',
+      path: '/categories',
+      component: () => import('@/views/pages/categories.vue')
     },
     {
       name: 'Add Visa',

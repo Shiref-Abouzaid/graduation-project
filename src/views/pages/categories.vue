@@ -1,20 +1,18 @@
 <template>
   <div class="d-flex align-end">
     <BaseBreadcrumb :title="page.title" :breadcrumbs="breadcrumbs"></BaseBreadcrumb>
-    <v-btn class="mb-2" color="primary" size="large" to="/visas/add">
+    <v-btn class="mb-2" color="primary" size="large" to="/categories/add">
       <PlusOutlined />
-      Add Visa</v-btn>
+      Add Category</v-btn>
   </div>
-  <UiParentCard title="Visas" bg="white">
+  <UiParentCard title="Categories" bg="white">
     <v-table height="68vh" fixed-header elevation class="bg-white">
       <thead>
         <tr>
           <th class="text-left">Name</th>
-          <th class="text-left">Phone</th>
-          <th class="text-left">Travellers</th>
-          <th class="text-left">Destination</th>
-          <th class="text-left">Visa Type</th>
-          <th class="text-left">Departure Date</th>
+          <th class="text-left">slug</th>
+          <th class="text-left">id</th>
+
           <th class="text-left">Actions</th>
         </tr>
       </thead>
@@ -30,11 +28,10 @@
         </tr>
         <tr v-if="!isLoading" v-for="item in subagents" :key="item.id">
           <td>{{ item.fullname }}</td>
-          <td>{{ item.phone }}</td>
-          <td>{{ item.number_of_travellers }}</td>
-          <td>{{ item.travel_destination }}</td>
-          <td>{{ item.visa_type }}</td>
-          <td>{{ item.departure_date.split("T")[0] }}</td>
+          <td>{{ item.slug }}</td>
+
+
+          <td>{{ item.id}}</td>
 
           <td>
             <div class="actions-container d-flex">
@@ -46,7 +43,7 @@
                 class="mx-2"
                 icon
                 title="edit"
-                :to="`/visas/add?editMode=true&id=${item.id}`"
+                :to="`/categories/add?editMode=true&id=${item.id}`"
                 ><FormOutlined
               /></v-btn>
               <v-btn color="error" icon title="delete" @click="showDelete(item.id)"
@@ -90,21 +87,18 @@ import { ref, shallowRef, onMounted } from "vue";
 type Visa = {
   id: number;
   fullname: string;
-  phone: string;
-  travel_destination: string;
-  visa_type: string;
-  departure_date: string;
-  number_of_travellers: number;
+  slug: string;
+
 };
 
-const isLoading = ref(true);
+const isLoading = ref(false);
 const idToDelete = ref();
-const page = ref({ title: "Visas" });
+const page = ref({ title: "Categories" });
 const deleteModal = ref(false);
 const deleteLoading = ref(false);
 const breadcrumbs = shallowRef([
   {
-    title: "Visas",
+    title: "Categories",
     disabled: true,
     href: "#",
   },
@@ -115,7 +109,11 @@ const breadcrumbs = shallowRef([
   },
 ]);
 
-const subagents = ref<Visa[]>([]);
+const subagents = ref<Visa[]>([{
+  fullname:'Electronics',
+  id:1,
+  slug:'elec'
+}]);
 
 function showDelete(id: number) {
   deleteModal.value = true;
@@ -134,6 +132,7 @@ function deleteSubagent() {
 }
 
 async function getSubagents() {
+  return;
   isLoading.value = true;
   fetchWrapper
     .get("/profile/getAll")
