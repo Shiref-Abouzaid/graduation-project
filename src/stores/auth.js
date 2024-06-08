@@ -33,7 +33,6 @@ export const useAuthStore = defineStore({
       router.push(this.returnUrl || '/categories');
       return;
       const user = await fetchWrapper.post(`${import.meta.env.VITE_API_URL}/account/login`, { email, password });
-
       // update pinia state
       this.user = user;
       user.data.email = email;
