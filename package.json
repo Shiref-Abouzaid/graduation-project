@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "author": "CodedThemes",
-  "homepage": "https://Shiref-Abouzaid.github.io/graduation-project",
+
   "scripts": {
     "dev": "vite --port 8080",
     "build": "vue-tsc --noEmit && vite build",
