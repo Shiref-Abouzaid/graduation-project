@@ -1,7 +1,8 @@
 // icons
 import {
   AppstoreOutlined,
-  SkinOutlined
+  SkinOutlined,
+  FireOutlined
 } from '@ant-design/icons-vue';
 
 export interface menu {
@@ -31,6 +32,11 @@ const sidebarItem: menu[] = [
     title: 'Products',
     icon: SkinOutlined,
     to: '/products',
+  },
+  {
+    title: 'Orders',
+    icon: FireOutlined,
+    to: '/orders',
   },
 
 

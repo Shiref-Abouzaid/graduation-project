@@ -99,7 +99,7 @@ async function validate() {
     isLoading.value = false;
 
     
-    responseMessage.value.message = error.error
+    responseMessage.value.message = error.message
   
   });
 }

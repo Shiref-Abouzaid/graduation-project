@@ -39,6 +39,13 @@ const MainRoutes = {
       component: () => import('@/views/pages/product/[id].vue')
     },
 
+    //orders
+    {
+      name:'Orders',
+      path:'/orders',
+      components:()=>import('@/views/pages/orders.vue')
+    }
+
   ]
 };
 
