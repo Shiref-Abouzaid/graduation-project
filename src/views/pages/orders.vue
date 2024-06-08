@@ -27,7 +27,7 @@
                     </td>
                     <td>{{ item.totalPrice }}</td>
                     <td>{{ item.orderDate.split('T')[0] }}</td>
-                    <td style="width:200px">
+                    <td style="width:300px">
 
                         <v-select label="Status" :items="statuses" item-title="name"  item-value="value"
                         @update:modelValue="(value) => changeStatus(value, index)"  v-model="item.status"/>
