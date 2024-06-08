@@ -30,7 +30,7 @@ const sidebarItem: menu[] = [
   {
     title: 'Products',
     icon: SkinOutlined,
-    to: '/categories/add',
+    to: '/products',
   },
 
 

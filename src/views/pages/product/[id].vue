@@ -82,8 +82,8 @@
   </v-card>
 
   <div class="d-flex mt-5"> 
-      <v-btn color="info" size="large" to="/categories"> <ArrowLeftOutlined /> Categories</v-btn>
-      <v-btn color="success" size="large" class="ms-auto" :to="`/category/add?editMode=true&id=${route.params.id}`"> <FormOutlined /> Edit</v-btn>
+      <v-btn color="info" size="large" to="/products"> <ArrowLeftOutlined /> Products</v-btn>
+      <v-btn color="success" size="large" class="ms-auto" :to="`/products/add?editMode=true&id=${route.params.id}`"> <FormOutlined /> Edit</v-btn>
     </div>
 </template>
 

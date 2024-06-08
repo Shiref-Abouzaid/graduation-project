@@ -1,13 +1,13 @@
 <template>
   <div :key="mykey">
     <BaseBreadcrumb
-      :title="editMode ? 'Edit Category' : 'Add Category'"
+      :title="editMode ? 'Edit Proudct' : 'Add Product'"
     
       :breadcrumbs="breadcrumbs"
    
     ></BaseBreadcrumb>
-    <UiParentCard title="Category" bg="white" >
-      <AddCategoryForm />
+    <UiParentCard title="Product" bg="white" >
+      <AddProductForm />
     </UiParentCard>
   </div>
 </template>
@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { ref, shallowRef, computed, watch } from "vue";
 import BaseBreadcrumb from "@/components/shared/BaseBreadcrumb.vue";
-import AddCategoryForm from "./components/addCategoryForm.vue";
+import AddProductForm from "./components/addProductForm.vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
@@ -31,9 +31,9 @@ watch(route, async () => {
 
 const breadcrumbs = shallowRef([
   {
-    title: "Categories",
+    title: "Products",
     disabled: false,
-    href: "/categories",
+    href: "/products",
   },
   {
     title: editMode.value ? "Edit" : "Add",
@@ -41,4 +41,4 @@ const breadcrumbs = shallowRef([
     href: "#",
   },
 ]);
-</script>./components/addCategoryForm.vue
+</script>
