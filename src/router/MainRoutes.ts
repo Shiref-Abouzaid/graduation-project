@@ -41,10 +41,15 @@ const MainRoutes = {
 
     //orders
     {
-      name:'Orders',
-      path:'/orders',
-      components:()=>import('@/views/pages/orders.vue')
-    }
+      name: 'Orders',
+      path: '/orders',
+      component: () => import('@/views/pages/orders.vue')
+    },
+    {
+      name: 'Order View',
+      path: '/order/:id',
+      component: () => import('@/views/pages/order/[id].vue')
+    },
 
   ]
 };

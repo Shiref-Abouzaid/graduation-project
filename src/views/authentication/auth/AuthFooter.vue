@@ -17,7 +17,7 @@ const footerLink = shallowRef([
       <v-col cols="12" md="6" class="text-md-left text-center">
         <p class="text-subtitle-2 text-lightText mb-md-0 mb-4">
           This site is protected by
-          <a href="https://visatyapp.com/en/privacy-policy" target="_blank" class="text-primary">Privacy Policy</a>
+          <a href="#" target="_blank" class="text-primary">Privacy Policy</a>
         </p>
       </v-col>
       <v-col class="d-flex flex-md-row flex-column justify-md-end align-center" cols="12" md="6">
@@ -25,7 +25,7 @@ const footerLink = shallowRef([
           v-for="(item, i) in footerLink"
           :key="i"
           class="mx-md-3 mx-2 mb-md-0 mb-2 text-subtitle-2 text-lightText"
-          href="https://visatyapp.com/en/privacy-policy"
+          href="#"
           target="_blank"
         >
           {{ item.title }}

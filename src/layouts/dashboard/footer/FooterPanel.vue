@@ -4,15 +4,15 @@ import { shallowRef } from 'vue';
 const footerLink = shallowRef([
   {
     title: 'About us',
-    href:'https://visatyapp.com/en/about-us'
+    href:'#'
   },
   {
     title: 'Privacy',
-    href:'https://visatyapp.com/en/privacy-policy'
+    href:'#'
   },
   {
     title: 'Terms',
-    href:'https://visatyapp.com/en/privacy-policy'
+    href:'#'
   }
 ]);
 </script>

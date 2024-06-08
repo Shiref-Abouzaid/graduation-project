@@ -11,7 +11,7 @@
           <tr>
             <th class="text-left">Name</th>
             <th class="text-left">id</th>
-            <th class="text-left">Created at</th>
+
   
             <th class="text-left">Actions</th>
           </tr>
@@ -27,11 +27,11 @@
             </td>
           </tr>
           <tr v-if="!isLoading" v-for="item in items" :key="item.id">
-            <td>{{ item.name }}</td>
+            <td style="max-width: 500px;">{{ item.name }}</td>
             <td>{{ item.id }}</td>
   
   
-            <td>{{ item.createdAt}}</td>
+    
   
             <td>
               <div class="actions-container d-flex">
