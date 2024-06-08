@@ -21,7 +21,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      'vue-i18n': 'vue-i18n/build/vue-i18n.esm-bundler.js'
+      'vue-i18n': 'vue-i18n/public/vue-i18n.esm-bundler.js'
     }
   },
   css: {
