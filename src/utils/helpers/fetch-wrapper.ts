@@ -10,28 +10,35 @@ export const fetchWrapper = {
 
 
 function request(method: string) {
-  return (url: string, body?: object) => {
-    /* eslint-disable @typescript-eslint/no-explicit-any */
+  return (url: string, body?: object | FormData) => {
     const requestOptions: any = {
       method,
       headers: authHeader(url)
     };
+
+    // Determine if the body is FormData or JSON
     if (body) {
-      requestOptions.headers['Content-Type'] = 'application/json';
-      requestOptions.headers['Accept'] = 'application/json';
-      requestOptions.headers['Access-Control-Allow-Origin'] = '*';
-      requestOptions.body = JSON.stringify(body);
+      if (body instanceof FormData) {
+        requestOptions.body = body;
+        // Do not set Content-Type for FormData; the browser will handle it automatically
+      } else {
+        requestOptions.headers['Content-Type'] = 'application/json';
+        requestOptions.headers['Accept'] = 'application/json';
+        requestOptions.headers['Access-Control-Allow-Origin'] = '*';
+        requestOptions.body = JSON.stringify(body);
+      }
     }
+
     let urlHandled;
     if (!url.startsWith('/')) {
       urlHandled = url;
     } else {
-      urlHandled = `${import.meta.env.VITE_API_URL}${url}`
+      urlHandled = `${import.meta.env.VITE_API_URL}${url}`;
     }
+
     return fetch(urlHandled, requestOptions).then(handleResponse);
   };
 }
-
 // helper functions
 
 function authHeader(url: string) {

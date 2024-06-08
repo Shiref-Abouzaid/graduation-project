@@ -96,7 +96,7 @@ async function submit() {
   data.append('Name', formData.value.name);
   data.append('Description', formData.value.description);
   data.append('Price', formData.value.price);
-  data.append('Price', formData.value.picture[0])
+  data.append('Picture', formData.value.picture[0])
   data.append('ProductCategoryId', formData.value.productCategoryId);
 
   responseMessage.value.message = []
@@ -156,7 +156,7 @@ async function getCategories() {
   fetchWrapper
     .get("/ProductCategory")
     .then((res) => {
-      categories.value = res.data;
+      categories.value = res;
     });
 }
 

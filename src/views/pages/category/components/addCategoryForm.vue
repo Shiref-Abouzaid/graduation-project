@@ -28,7 +28,7 @@
       :loading="isLoading"
       class="mt-2 ms-auto submit-btn"
       color="success"
-      @click="editVisa"
+      @click="editItem"
       block
     >
       Edit
@@ -53,9 +53,7 @@
 import { fetchWrapper } from "@/utils/helpers/fetch-wrapper";
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
-import Eg from '@/assets/icons/eg.svg';
-import Kw from '@/assets/icons/kw.svg';
-import Sa from '@/assets/icons/sa.svg';
+
 const route = useRoute();
 const countries = ref([]);
 let initialFormData: any;
@@ -138,14 +136,14 @@ function getChangedData() {
   return params.toString();
 }
 
-async function editVisa() {
+async function editItem() {
   const validation = await formRef.value.validate();
   if (!validation.valid) return;
 
   responseMessage.value.message = []
   isLoading.value = true;
   await fetchWrapper
-    .put(`/ProductCategory/${route.query.id}?${getChangedData()}`)
+    .put(`/ProductCategory`, {name:formData.value.name})
     .then((res) => {
       isLoading.value = false;
       responseMessage.value.status = 200;
@@ -162,7 +160,7 @@ async function editVisa() {
 async function getCategoryData() {
   
   await fetchWrapper.get(`/ProductCategory/${route.query.id}`).then((res) => {
-    formData.value = res.data.visa;
+    formData.value = res;
 
     formData.value.arrival_date = res.data.visa.arrival_date.split("T")[0];
     formData.value.departure_date = res.data.visa.departure_date.split("T")[0];

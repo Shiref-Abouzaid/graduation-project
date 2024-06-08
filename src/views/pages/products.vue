@@ -134,9 +134,9 @@
   async function getProducts() {
     isLoading.value = true;
     fetchWrapper
-      .get("/Product")
+      .get("/Product?PageSize=1000")
       .then((res) => {
-        items.value = res;
+        items.value = res.data;
         isLoading.value = false;
       })
       .catch(() => {

@@ -21,27 +21,27 @@ export const useAuthStore = defineStore({
 
     async login(email, password) {
      
-      this.user = {
-        email:email,
-      }
-      localStorage.setItem('user', JSON.stringify({
-        email:email,
-        token:'Basic MTExODA3NjU6NjAtZGF5ZnJlZXRyaWFs'
-      }));
-      this.token = 'Basic MTExODA3NjU6NjAtZGF5ZnJlZXRyaWFs' // this for only first load
-      this.email = email;
-      router.push(this.returnUrl || '/categories');
-      return;
+      // this.user = {
+      //   email:email,
+      // }
+      // localStorage.setItem('user', JSON.stringify({
+      //   email:email,
+      //   token:'Basic MTExODA3NjU6NjAtZGF5ZnJlZXRyaWFs'
+      // }));
+      // this.token = 'Basic MTExODA3NjU6NjAtZGF5ZnJlZXRyaWFs' // this for only first load
+      // this.email = email;
+      // router.push(this.returnUrl || '/categories');
+      // return;
       const user = await fetchWrapper.post(`${import.meta.env.VITE_API_URL}/account/login`, { email, password });
       // update pinia state
       this.user = user;
-      user.data.email = email;
+      if(user.role  != 'Admin') return;
       // store user details and jwt in local storage to keep user logged in between page refreshes
-      localStorage.setItem('user', JSON.stringify(user.data));
-      this.token = user.data.token // this for only first load
+      localStorage.setItem('user', JSON.stringify(user));
+      this.token = user.token // this for only first load
       this.email = email;
       // redirect to previous url or default to home page
-      router.push(this.returnUrl || '/visas');
+      router.push(this.returnUrl || '/categories');
     },
     logout() {
       this.user = null;
