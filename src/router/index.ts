@@ -5,8 +5,7 @@ import { useAuthStore } from '@/stores/auth';
 import { useUIStore } from '@/stores/ui';
 
 export const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  mode: 'history',
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
