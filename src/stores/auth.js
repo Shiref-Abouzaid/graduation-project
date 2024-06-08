@@ -19,7 +19,7 @@ export const useAuthStore = defineStore({
 
 
 
-    async login(email: string, password: string) {
+    async login(email, password) {
      
       this.user = {
         email:email,

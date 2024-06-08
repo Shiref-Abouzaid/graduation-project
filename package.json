@@ -1,8 +1,9 @@
 {
-  "name": "mantis-vuetify-vuejs-free",
+  "name": "graduation-project",
   "version": "1.0.0",
   "private": false,
   "author": "CodedThemes",
+  "homepage": "https://Shiref-Abouzaid.github.io/graduation-project",
   "scripts": {
     "dev": "vite --port 8080",
     "build": "vue-tsc --noEmit && vite build",
@@ -10,7 +11,8 @@
     "build-prod": "vue-tsc --noEmit && vite build --base=/vue/free/",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.0",
@@ -34,6 +36,7 @@
     "@vue/tsconfig": "0.4.0",
     "eslint": "8.48.0",
     "eslint-plugin-vue": "9.17.0",
+    "gh-pages": "^6.1.1",
     "prettier": "3.0.2",
     "sass": "1.66.1",
     "sass-loader": "13.3.2",
