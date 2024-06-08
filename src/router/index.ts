@@ -9,7 +9,7 @@ export const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/vategories' // Add this route object to handle the redirection
+      redirect: '/categories' // Add this route object to handle the redirection
     },
     {
       path: '/:pathMatch(.*)*',

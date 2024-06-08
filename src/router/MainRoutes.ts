@@ -13,13 +13,13 @@ const MainRoutes = {
     },
     {
       name: 'Add Visa',
-      path: '/visas/add',
-      component: () => import('@/views/pages/addVisa/index.vue')
+      path: '/category/add',
+      component: () => import('@/views/pages/category/index.vue')
     },
     {
       name: 'View Visa',
-      path: '/visas/:id',
-      component: () => import('@/views/pages/visa/[id].vue')
+      path: '/category/:id',
+      component: () => import('@/views/pages/category/[id].vue')
     },
 
   ]
