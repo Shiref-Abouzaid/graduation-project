@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex justify-space-between align-center">
     <h3 class="text-h3 text-center mb-0">Login</h3>
-    <router-link to="/auth/register" class="text-primary text-decoration-none">Don't Have an account?</router-link>
+    <!-- <router-link to="/auth/register" class="text-primary text-decoration-none">Don't Have an account?</router-link> -->
   </div>
   <v-form @submit.prevent="validate" v-model="valid"  class="mt-7 loginForm" >
     <div class="mb-6">
@@ -53,9 +53,9 @@
         class="ms-n2"
         hide-details
       ></v-checkbox>
-      <div class="ml-auto">
+      <!-- <div class="ml-auto">
         <router-link to="/auth/forgot-password" class="text-darkText link-hover">Forgot Password?</router-link>
-      </div>
+      </div> -->
     </div>
     <v-btn :loading="isLoading" color="primary" block class="mt-5" variant="flat" size="large" type="submit">
       Login</v-btn
