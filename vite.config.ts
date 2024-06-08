@@ -32,7 +32,7 @@ export default defineConfig({
   build: {
     outDir: 'build',
     assetFileNames: (assetInfo) => {
-      if (assetInfo.name === '_plugin-vue_export-helper-c27b6911.js') return 'plugin-vue_export-helper-c27b6911.js';
+      if (assetInfo.name[0] == '_') return assetInfo.substring(1);
       return assetInfo.name;
     },
   },
