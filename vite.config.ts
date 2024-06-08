@@ -31,10 +31,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'build',
-    assetFileNames: (assetInfo) => {
-      if (assetInfo.name[0] == '_') return assetInfo.substring(1);
-      return assetInfo.name;
-    },
+
+
   },
   optimizeDeps: {
     exclude: ['vuetify'],
