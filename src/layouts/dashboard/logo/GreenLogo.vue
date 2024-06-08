@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <RouterLink to="/visas" aria-label="logo">
+    <RouterLink to="/categories" aria-label="logo">
       <img src="@/assets/images/LogoGreen.webp" width="100"/>
     </RouterLink>
     

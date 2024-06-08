@@ -16,8 +16,23 @@ export const useAuthStore = defineStore({
     returnUrl: null
   }),
   actions: {
+
+
+
     async login(email: string, password: string) {
-      const user = await fetchWrapper.post(`${import.meta.env.VITE_API_URL}/auth/login`, { email, password });
+     
+      this.user = {
+        email:email,
+      }
+      localStorage.setItem('user', JSON.stringify({
+        email:email,
+        token:'Basic MTExODA3NjU6NjAtZGF5ZnJlZXRyaWFs'
+      }));
+      this.token = 'Basic MTExODA3NjU6NjAtZGF5ZnJlZXRyaWFs' // this for only first load
+      this.email = email;
+      router.push(this.returnUrl || '/categories');
+      return;
+      const user = await fetchWrapper.post(`${import.meta.env.VITE_API_URL}/account/login`, { email, password });
 
       // update pinia state
       this.user = user;

@@ -1,7 +1,7 @@
 // icons
 import {
-  UsergroupAddOutlined,
-  UserAddOutlined
+  AppstoreOutlined,
+  SkinOutlined
 } from '@ant-design/icons-vue';
 
 export interface menu {
@@ -23,14 +23,14 @@ export interface menu {
 const sidebarItem: menu[] = [
   { header: 'Bisas' },
   {
-    title: 'Visas',
-    icon: UsergroupAddOutlined,
-    to: '/visas',
+    title: 'Categories',
+    icon: AppstoreOutlined,
+    to: '/categories',
   },
   {
-    title: 'Add',
-    icon: UserAddOutlined,
-    to: '/visas/add',
+    title: 'Products',
+    icon: SkinOutlined,
+    to: '/products',
   },
 
 

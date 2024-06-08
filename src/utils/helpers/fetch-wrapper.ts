@@ -40,7 +40,7 @@ function authHeader(url: string) {
 
   const isLoggedIn = !!user?.token;
 
-
+  
 
   if (isLoggedIn) {
     return { Authorization: `Bearer ${user.token}` };
