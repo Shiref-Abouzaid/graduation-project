@@ -83,6 +83,16 @@
                  </v-btn>
              </template>
          </v-snackbar>
+         <v-snackbar v-model="deleteError">
+     
+     You Cannot delete this category!
+
+             <template v-slot:actions>
+                 <v-btn color="success" variant="text" @click="deleteError = false">
+                     Close
+                 </v-btn>
+             </template>
+         </v-snackbar>
 </template>
 
 <script setup lang="ts">
@@ -99,6 +109,8 @@ type Category = {
   createdAt: string;
 
 };
+
+const deleteError = ref(false)
 
 const isLoading = ref(false);
 const idToDelete = ref();
@@ -138,7 +150,11 @@ function deleteCategory() {
       return item.id != idToDelete.value;
     });
     deleteCategoryMessage.value = true;
-  });
+  }).catch(()=>{
+    deleteError.value = true;
+    deleteModal.value = false;
+    deleteLoading.value = false;
+  })
 }
 
 async function getCategories() {
@@ -150,7 +166,10 @@ async function getCategories() {
       isLoading.value = false;
     })
     .catch(() => {
+    
+   
       isLoading.value = false;
+     
     });
 }
 

@@ -14,10 +14,10 @@
       </v-col>
 
       <v-col cols="12" sm="6" class="py-1">
-        <v-file-input label="Picture" v-model="formData.picture" :rules="[validationRules.required]" ></v-file-input>
+        <v-file-input label="Picture" v-model="formData.picture" :rules="[validationRules.required]"></v-file-input>
 
         <v-select label="Category" :items="categories" item-title="name" item-value="id"
-          v-model="formData.productCategoryId"  />
+          v-model="formData.productCategoryId" />
       </v-col>
 
     </v-row>
@@ -38,17 +38,17 @@
   </v-form>
 
   <v-snackbar v-model="message">
-     
-     Product has been added successfully!
-             <template v-slot:actions>
-                 <v-btn color="success" variant="text" @click="message = false">
-                     Close
-                 </v-btn>
-             </template>
-         </v-snackbar>
+
+    Product has been added successfully!
+    <template v-slot:actions>
+      <v-btn color="success" variant="text" @click="message = false">
+        Close
+      </v-btn>
+    </template>
+  </v-snackbar>
 </template>
 
-<script setup >
+<script setup>
 import { fetchWrapper } from "@/utils/helpers/fetch-wrapper";
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
@@ -60,7 +60,7 @@ const isLoading = ref(false);
 const formRef = ref(null);
 const formData = ref({
   name: "",
-  description:'',
+  description: '',
 
 });
 
@@ -109,7 +109,7 @@ async function submit() {
   responseMessage.value.message = []
   isLoading.value = true;
   fetchWrapper
-    .post("/Product",data)
+    .post("/Product", data)
     .then((res) => {
       isLoading.value = false;
       message.value = true;
@@ -125,34 +125,41 @@ async function submit() {
 
 function getChangedData() {
   //get only changed data as string to send as query
-  const changedData =  {};
-  const params = new URLSearchParams();
+  const changedData = {};
+
+  let body = {}
   Object.keys(formData.value).forEach((key) => {
     if (formData.value[key] !== initialFormData[key]) {
-      changedData[key] = formData.value[key];
-      params.append(key, changedData[key]);
+
+      body[key] = formData.value[key]
+
     }
   });
 
-  return params.toString();
+  return body
 }
 
 async function edit() {
   const validation = await formRef.value.validate();
   if (!validation.valid) return;
+  let body = getChangedData();
 
-  responseMessage.value.message = []
   isLoading.value = true;
   let data = new FormData();
+
+
+
+  const fields = ['name', 'description', 'price', 'productCategoryId'];
   data.append('id', route.query.id);
-  data.append('Name', formData.value.name);
-  data.append('Description', formData.value.description);
-  data.append('Price', formData.value.price);
-  if(formData.value.picture) {
+  fields.forEach(field => {
+    if (body[field]) {
+      data.append(field.charAt(0).toUpperCase() + field.slice(1), body[field]);
+    }
+  });
+
+  if (formData.value.picture) {
     data.append('Picture', formData.value.picture[0])
   }
-  
-
 
 
   await fetchWrapper
