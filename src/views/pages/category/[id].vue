@@ -32,42 +32,7 @@
 
     </v-row>
 
-    <v-divider class="d-md-block"></v-divider>
-<!-- 
-    <v-row class="ma-0">
-      <v-col cols="12" sm="6" md="3">
-        <div class="d-flex">
-          <div class="text-primary font-weight-bold">Arrival Date:</div>
-          <div class="ms-auto">{{ subagent.arrival_date.split("T")[0] }}</div>
-        </div>
-      </v-col>
-      <v-col cols="12" sm="6" md="3">
-        <div class="d-flex">
-          <div class="text-primary font-weight-bold">Travel Destination:</div>
-          <div class="ms-auto">{{ subagent.travel_destination }}</div>
-        </div>
-      </v-col>
-      <v-col cols="12" sm="6" md="3">
-        <div class="d-flex">
-          <div class="text-primary font-weight-bold">Visa Type:</div>
-          <div class="ms-auto">{{ subagent.visa_type }}</div>
-        </div>
-      </v-col>
-      <v-col cols="12" sm="6" md="3">
-        <div class="d-flex">
-          <div class="text-primary font-weight-bold">Number of Travellers:</div>
-          <div class="ms-auto">{{ subagent.number_of_travellers }}</div>
-        </div>
-      </v-col>
-      <v-divider class="d-md-block"></v-divider>
- 
-      <v-col cols="12" sm="6" md="3">
-        <div class="d-flex">
-          <div class="text-primary font-weight-bold">Email:</div>
-          <div class="ms-auto">{{ subagent.email }}</div>
-        </div>
-      </v-col>
-    </v-row> -->
+
 
     <v-divider ></v-divider>
 

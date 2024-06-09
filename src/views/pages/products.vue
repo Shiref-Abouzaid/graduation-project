@@ -84,7 +84,7 @@
   import BaseBreadcrumb from "@/components/shared/BaseBreadcrumb.vue";
   import { ref, shallowRef, onMounted } from "vue";
   
-  type Visa = {
+  type Product = {
     id: number;
     name: string;
     createdAt: string;
@@ -109,7 +109,7 @@
     },
   ]);
   
-  const items = ref<Visa[]>([{
+  const items = ref<Product[]>([{
     name:'Electronics',
     id:1,
     createdAt:'2024-06-07T18:39:09.298902Z'

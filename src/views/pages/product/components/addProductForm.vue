@@ -24,7 +24,7 @@
     <v-btn v-if="!editMode" :loading="isLoading" class="mt-2 ms-auto submit-btn" color="primary" type="submit" block>
       Submit
     </v-btn>
-    <v-btn v-else :loading="isLoading" class="mt-2 ms-auto submit-btn" color="success" @click="editVisa" block>
+    <v-btn v-else :loading="isLoading" class="mt-2 ms-auto submit-btn" color="success" @click="edit" block>
       Edit
     </v-btn>
     <div class="d-flex">
@@ -131,7 +131,7 @@ function getChangedData() {
   return params.toString();
 }
 
-async function editVisa() {
+async function edit() {
   const validation = await formRef.value.validate();
   if (!validation.valid) return;
 

@@ -162,15 +162,6 @@ async function getCategoryData() {
   await fetchWrapper.get(`/ProductCategory/${route.query.id}`).then((res) => {
     formData.value = res;
 
-    formData.value.arrival_date = res.data.visa.arrival_date.split("T")[0];
-    formData.value.departure_date = res.data.visa.departure_date.split("T")[0];
-    if(res.data.visa.phone[0] == '2') {
-      formData.value.country_code = res.data.visa.phone.substring(0, 2)
-      formData.value.phone =res.data.visa.phone.substring(2)
-    } else if(res.data.visa.phone[0] == '9') {
-      formData.value.country_code = res.data.visa.phone.substring(0, 3)
-      formData.value.phone =res.data.visa.phone.substring(3)
-    }
     initialFormData = JSON.parse(JSON.stringify(formData.value)); // copy object to compare it later to send the edited properties to edit endpoint
   });
 }

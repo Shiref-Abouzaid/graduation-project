@@ -84,7 +84,7 @@ import { DeleteOutlined, FormOutlined, EyeOutlined, PlusOutlined} from "@ant-des
 import BaseBreadcrumb from "@/components/shared/BaseBreadcrumb.vue";
 import { ref, shallowRef, onMounted } from "vue";
 
-type Visa = {
+type Category = {
   id: number;
   name: string;
   createdAt: string;
@@ -109,7 +109,7 @@ const breadcrumbs = shallowRef([
   },
 ]);
 
-const categories = ref<Visa[]>([{
+const categories = ref<Category[]>([{
   name:'Electronics',
   id:1,
   createdAt:'2024-06-07T18:39:09.298902Z'
