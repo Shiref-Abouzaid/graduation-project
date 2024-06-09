@@ -36,13 +36,23 @@
       </v-alert>
     </div>
   </v-form>
+
+  <v-snackbar v-model="message">
+     
+     Product has been added successfully!
+             <template v-slot:actions>
+                 <v-btn color="success" variant="text" @click="message = false">
+                     Close
+                 </v-btn>
+             </template>
+         </v-snackbar>
 </template>
 
 <script setup lang="ts">
 import { fetchWrapper } from "@/utils/helpers/fetch-wrapper";
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
-
+const message = ref(false)
 const route = useRoute();
 const categories = ref([]);
 let initialFormData: any;
@@ -105,8 +115,7 @@ async function submit() {
     .post("/Product",data)
     .then((res) => {
       isLoading.value = false;
-      responseMessage.value.status = 200;
-      responseMessage.value.message = [res.data.message];
+      message.value = true;
       resetData();
     })
     .catch((err) => {

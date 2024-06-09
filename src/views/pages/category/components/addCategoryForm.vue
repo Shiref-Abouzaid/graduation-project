@@ -47,6 +47,16 @@
       </v-alert>
     </div>
   </v-form>
+
+  <v-snackbar v-model="message">
+     
+     Category has been added successfully!
+             <template v-slot:actions>
+                 <v-btn color="success" variant="text" @click="message = false">
+                     Close
+                 </v-btn>
+             </template>
+         </v-snackbar>
 </template>
 
 <script setup lang="ts">
@@ -55,7 +65,7 @@ import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-const countries = ref([]);
+const message = ref(false)
 let initialFormData: any;
 const isLoading = ref(false);
 const formRef: any = ref(null);
@@ -110,8 +120,7 @@ async function submit() {
     .post("/ProductCategory", formData.value)
     .then((res) => {
       isLoading.value = false;
-      responseMessage.value.status = 200;
-      responseMessage.value.message = [res.data.message];
+      message.value = true;
       resetData();
     })
     .catch((err) => {
