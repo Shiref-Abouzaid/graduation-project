@@ -156,7 +156,7 @@ async function getOrders() {
     fetchWrapper
         .get("/Order?PageSize=1000")
         .then((res) => {
-            items.value = res.data;
+            items.value = res.data.reverse();
             isLoading.value = false;
         })
         .catch(() => {

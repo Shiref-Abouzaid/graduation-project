@@ -50,7 +50,7 @@
 
   <v-snackbar v-model="message">
      
-     Category has been added successfully!
+     Successed!
              <template v-slot:actions>
                  <v-btn color="success" variant="text" @click="message = false">
                      Close
@@ -155,8 +155,8 @@ async function editItem() {
     .put(`/ProductCategory`, {name:formData.value.name})
     .then((res) => {
       isLoading.value = false;
-      responseMessage.value.status = 200;
-      responseMessage.value.message = [res.data.message];
+      message.value = true;
+   
     })
     .catch((err) => {
       isLoading.value = false;

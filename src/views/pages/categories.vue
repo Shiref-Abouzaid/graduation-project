@@ -74,6 +74,15 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
+  <v-snackbar v-model="deleteCategoryMessage">
+     
+     Category has been deleted successfully!
+             <template v-slot:actions>
+                 <v-btn color="success" variant="text" @click="deleteCategoryMessage = false">
+                     Close
+                 </v-btn>
+             </template>
+         </v-snackbar>
 </template>
 
 <script setup lang="ts">
@@ -83,7 +92,7 @@ import { DeleteOutlined, FormOutlined, EyeOutlined, PlusOutlined} from "@ant-des
 
 import BaseBreadcrumb from "@/components/shared/BaseBreadcrumb.vue";
 import { ref, shallowRef, onMounted } from "vue";
-
+const deleteCategoryMessage = ref(false)
 type Category = {
   id: number;
   name: string;
@@ -128,6 +137,7 @@ function deleteCategory() {
     categories.value = categories.value.filter((item) => {
       return item.id != idToDelete.value;
     });
+    deleteCategoryMessage.value = true;
   });
 }
 
@@ -136,7 +146,7 @@ async function getCategories() {
   fetchWrapper
     .get("/ProductCategory")
     .then((res) => {
-      categories.value = res;
+      categories.value = res.reverse();
       isLoading.value = false;
     })
     .catch(() => {

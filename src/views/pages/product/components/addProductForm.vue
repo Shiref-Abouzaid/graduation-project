@@ -16,7 +16,7 @@
       <v-col cols="12" sm="6" class="py-1">
         <v-file-input label="Picture" v-model="formData.picture" :rules="[validationRules.required]" ></v-file-input>
 
-        <v-select label="Type of Visa" :items="categories" item-title="name" item-value="id"
+        <v-select label="Category" :items="categories" item-title="name" item-value="id"
           v-model="formData.productCategoryId"  />
       </v-col>
 
@@ -146,8 +146,20 @@ async function edit() {
 
   responseMessage.value.message = []
   isLoading.value = true;
+  let data = new FormData();
+  data.append('id', route.query.id);
+  data.append('Name', formData.value.name);
+  data.append('Description', formData.value.description);
+  data.append('Price', formData.value.price);
+  if(formData.value.picture) {
+    data.append('Picture', formData.value.picture[0])
+  }
+  
+
+
+
   await fetchWrapper
-    .put(`/Product/${route.query.id}?${getChangedData()}`)
+    .put(`/Product`, data)
     .then((res) => {
       isLoading.value = false;
       responseMessage.value.status = 200;
@@ -172,17 +184,9 @@ async function getCategories() {
 async function getProductData() {
 
   await fetchWrapper.get(`/Product/${route.query.id}`).then((res) => {
-    formData.value = res.data.visa;
+    formData.value = res;
 
-    formData.value.arrival_date = res.data.visa.arrival_date.split("T")[0];
-    formData.value.departure_date = res.data.visa.departure_date.split("T")[0];
-    if (res.data.visa.phone[0] == '2') {
-      formData.value.country_code = res.data.visa.phone.substring(0, 2)
-      formData.value.phone = res.data.visa.phone.substring(2)
-    } else if (res.data.visa.phone[0] == '9') {
-      formData.value.country_code = res.data.visa.phone.substring(0, 3)
-      formData.value.phone = res.data.visa.phone.substring(3)
-    }
+
     initialFormData = JSON.parse(JSON.stringify(formData.value)); // copy object to compare it later to send the edited properties to edit endpoint
   });
 }
