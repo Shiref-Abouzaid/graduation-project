@@ -6,7 +6,6 @@ import { useUIStore } from '@/stores/ui';
 
 export const router = createRouter({
   history: createWebHashHistory(),
-
   routes: [
     {
       path: '/',
