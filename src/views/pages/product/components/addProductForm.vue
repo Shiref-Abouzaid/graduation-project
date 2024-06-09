@@ -48,17 +48,17 @@
          </v-snackbar>
 </template>
 
-<script setup lang="ts">
+<script setup >
 import { fetchWrapper } from "@/utils/helpers/fetch-wrapper";
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
 const message = ref(false)
 const route = useRoute();
 const categories = ref([]);
-let initialFormData: any;
+let initialFormData;
 const isLoading = ref(false);
-const formRef: any = ref(null);
-const formData: any = ref({
+const formRef = ref(null);
+const formData = ref({
   name: "",
   description:'',
 
@@ -66,16 +66,13 @@ const formData: any = ref({
 
 
 
-const responseMessage = ref<{
-  status: number;
-  message: string[];
-}>({
+const responseMessage = ref({
   status: 0,
   message: [],
 });
 
 const validationRules = {
-  required: (value: any) => !!value || "This field is required.",
+  required: (value) => !!value || "This field is required.",
 };
 
 
@@ -122,13 +119,13 @@ async function submit() {
       isLoading.value = false;
       const errorMessages = Object.values(err.errors).flat();
       responseMessage.value.status = 400;
-      responseMessage.value.message = errorMessages as string[];
+      responseMessage.value.message = errorMessages;
     });
 }
 
 function getChangedData() {
   //get only changed data as string to send as query
-  const changedData: any = {};
+  const changedData =  {};
   const params = new URLSearchParams();
   Object.keys(formData.value).forEach((key) => {
     if (formData.value[key] !== initialFormData[key]) {
@@ -169,7 +166,7 @@ async function edit() {
       isLoading.value = false;
       const errorMessages = Object.values(err.errors).flat();
       responseMessage.value.status = 400;
-      responseMessage.value.message = errorMessages as string[];
+      responseMessage.value.message = errorMessages;
     });
 }
 
@@ -191,7 +188,7 @@ async function getProductData() {
   });
 }
 
-function reformateDate(str: string): any { // reformate date to change string from back end to set it ccorrectly in  Date object
+function reformateDate(str) { // reformate date to change string from back end to set it ccorrectly in  Date object
   const dateString = str;
   const parts = dateString.split("-");
   const newFormat = `${parts[1]}-${parts[2]}-${parts[0]}`;
